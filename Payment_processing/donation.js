@@ -30,12 +30,12 @@ $(document).ready(function(){
     // Create an instance of the card Element.
     var card = elements.create('card', {style: style});
 
-    // Add an instance of the card Element into the `card-element` <div>.
-    card.mount('#card-element');
+    // Add an instance of the card Element into the `card_element` <div>.
+    card.mount('#card_element');
 
     // Handle real-time validation errors from the card Element.
     card.addEventListener('change', function(event) {
-        var displayError = document.getElementById('card-errors');
+        var displayError = document.getElementById('card_errors');
         if (event.error) {
             displayError.textContent = event.error.message;
         } else {
@@ -45,22 +45,36 @@ $(document).ready(function(){
 
     //****************************************************************** End of strip code
 
+
     $('form[id="payment-form"]').validate({
         rules: {
             first_name: 'required',
             last_name: 'required',
+            zip_code: {
+                required: true,
+                digits: true,
+                minlength: 5,
+                maxlength: 5
+            },
             user_email: {
                 required: true,
                 email: true
+            },
+            card_element:{
+                required: true,
+                digits: true
             }
         },
         messages: {
             first_name: 'This field is required',
             last_name: 'This field is required',
+            zip_code: 'Enter a valide zip code',
+            card_element: 'Enter a valid card number',
             user_email: 'Enter a valid email'
         },
         submitHandler: (function (event) {
             var form = $('form[id="payment-form"]').serialize();
+            var card =
             alert(form);
             event.submit();
         })
