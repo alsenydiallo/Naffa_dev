@@ -1,9 +1,19 @@
 body {
     font-family: "Helvetica Neue", Helvetica, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: honeydew;
+}
+
+::placeholder{
+    font-size: 16px;
+    color: #aab7c4;
 }
 
 .error{
     color: red;
+    font-family: "Trebuchet MS", Verdana, sans-serif;
+    font-size: smaller;
 }
 
 label.error{
@@ -15,34 +25,39 @@ label.error{
     box-sizing: border-box;
 }
 
-/* Add padding to containers */
-.container {
-    padding: 16px;
-    background-color: white;
+
+.input--webkit-autofill {
+    background-color: #fefde5 !important;
 }
 
 /* Full-width input fields */
 input[type=text], input[type=email] {
     width: 100%;
-    padding: 15px;
     margin: 5px 0 22px 0;
-    display: inline-block;
-    border: none;
-    background: #f1f1f1;
+    background-color: white;
+    height: 40px;
+    padding: 10px 12px;
+    border-radius: 4px;
+    border: 1px solid transparent;
+    box-shadow: 0 1px 3px 0 #e6ebf1;
 }
 
-input[type=text]:focus, input[type=email]:focus {
-    background-color: #ddd;
-    outline: none;
+input[type=text]:focus, input[type=email]:focus{
+    font-size: 16px;
+    box-shadow: 0 1px 3px 0 #cfd7df;
+    background-color: #a5ddad;
 }
 
 /* Set a style for the submit button */
 .submit {
+    font-size: 16px;
     background-color: #4CAF50;
     color: white;
     padding: 16px 20px;
-    margin: 8px 0;
-    border: none;
+    margin: 5px 0 22px 0;
+    border-radius: 4px;
+    border: 1px solid transparent;
+    box-shadow: 0 1px 3px 0 #e6ebf1;
     cursor: pointer;
     width: 100%;
     opacity: 0.9;
@@ -61,16 +76,18 @@ input[type=text]:focus, input[type=email]:focus {
     box-shadow: 0 1px 3px 0 #e6ebf1;
     -webkit-transition: box-shadow 150ms ease;
     transition: box-shadow 150ms ease;
+    margin: 5px 0 22px 0;
 }
 
 .StripeElement--focus {
     box-shadow: 0 1px 3px 0 #cfd7df;
+    background-color: #a5ddad;
 }
 
 .StripeElement--invalid {
-    border-color: #fa755a;
+    border-color: red;
 }
 
 .StripeElement--webkit-autofill {
-    background-color: #fefde5 !important;
+    background-color: white !important;
 }

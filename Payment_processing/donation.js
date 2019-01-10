@@ -46,38 +46,48 @@ $(document).ready(function(){
     //****************************************************************** End of strip code
 
 
-    $('form[id="payment-form"]').validate({
-        rules: {
-            first_name: 'required',
-            last_name: 'required',
-            zip_code: {
-                required: true,
-                digits: true,
-                minlength: 5,
-                maxlength: 5
-            },
-            user_email: {
-                required: true,
-                email: true
-            },
-            card_element:{
-                required: true,
-                digits: true
+    $('form[id="payment-form"]').on('submit', function(e){
+        e.preventDefault();
+
+        $(".error").remove();
+
+        var first_name = $('#first_name').val();
+        var last_name = $('#last_name').val();
+        var email = $('#user_email').val();
+        var zip_code = $('#zip_code').val();
+        var card = $('#card_element').val();
+
+        if(first_name.length < 1) {
+            $('#first_name').before('<span class="error">This field is required</span>');
+        }
+
+        if(last_name.length < 1) {
+            $('#last_name').before('<span class="error">This field is required</span>');
+        }
+
+        if(email.length < 1) {
+            $('#user_email').before('<span class="error">This field is required</span>');
+        } else {
+            var regEx = /^[A-Z0-9][A-Z0-9._%+-]{0,63}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/;
+            var validEmail = regEx.test(email);
+            if (!validEmail) {
+                $('#email').before('<span class="error">Enter a valid email</span>');
             }
-        },
-        messages: {
-            first_name: 'This field is required',
-            last_name: 'This field is required',
-            zip_code: 'Enter a valide zip code',
-            card_element: 'Enter a valid card number',
-            user_email: 'Enter a valid email'
-        },
-        submitHandler: (function (event) {
-            var form = $('form[id="payment-form"]').serialize();
-            var card =
-            alert(form);
-            event.submit();
-        })
+        }
+
+        if(zip_code.length < 1){
+            $('#zip_code').before('<span class="error">This field is required</span>')
+        }else{
+            var regEx = /^[0-9]{5}(?:-[0-9]{4})?$/;
+            var valid_zipCode = regEx.test(zip_code);
+            if(!valid_zipCode){
+                $('#zip_code').before('<span class="error">Enter a valide zip code</span>');
+            }
+
+        }
+        if(card.length < 1){
+        }
+
 
     });
 
