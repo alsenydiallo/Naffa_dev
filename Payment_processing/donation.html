@@ -24,7 +24,7 @@
         <input type="email" id="user_email" name="user_email" placeholder="eg: Alidormosisi@gmail.com">
     </div>
     <div>
-        <label for="amount"> Amount</label>  <b>$</b> US Dollards
+        <label for="amount"> Amount</label>  <b>$</b> US Dollars
         <input type="number" id="amount" placeholder="$20.0">
     </div>
     <div class="form-row">
@@ -42,14 +42,17 @@
             <a href="" id="show_disclaimer" class="disable"> I have read and agree to the <b>Terms and Conditions</b> and <b>Privacy Policy</b></a>
         <div class="disclaimer" id="disclaimer"><!-- Will display disclaimer here--></div>
     </div>
-
+    <!-- Insert google captcha to prevent spamming attack -->
+    <!--
     <div class="g-recaptcha" data-sitekey=""></div>
     <div>
-        <input class="submit" type="submit" value="Donate" />
+    -->
+        <input id="button" class="submit" type="submit" value="Donate" />
     </div>
+
 </form>
 
-<script src="https://js.stripe.com/v3/"></script>
+<script defer src="http://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="http://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
 <script type="text/javascript" src="donation.js"></script>

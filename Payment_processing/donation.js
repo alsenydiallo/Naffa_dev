@@ -3,7 +3,7 @@ $(document).ready(function(){
     //******************** creat card element **************************
     // https://stripe.com/docs/stripe-js
     // Create a Stripe client.
-    var stripe = Stripe('pk_test_ip1Tprb7ZQnygnd29kbzAg8s');
+    var stripe = Stripe('pk_test_PHFmHnlx8XQASMab8s9o5laq');
     // Create an instance of Elements.
     var elements = stripe.elements();
     // Custom styling can be passed to options when creating an Element.
@@ -11,7 +11,6 @@ $(document).ready(function(){
     var style = {
         base: {
             color: '#32325d',
-            lineHeight: '18px',
             fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
             fontSmoothing: 'antialiased',
             fontSize: '16px',
@@ -32,10 +31,16 @@ $(document).ready(function(){
     // Handle real-time validation errors from the card Element.
     card.addEventListener('change', function(event) {
         var displayError = document.getElementById('card_errors');
+
         if (event.error) {
+            displayError.setAttribute('class', 'error');
             displayError.textContent = event.error.message;
+            //document.getElementById('button').hidden = true;
+            //$('#button').prop('disabled',true);
         } else {
             displayError.textContent = '';
+            //document.getElementById('button').hidden = false;
+            //$('#button').prop('disabled',false);
         }
     });
 
@@ -99,25 +104,24 @@ $(document).ready(function(){
         }
 
 
-        var stripe = Stripe('pk_test_ip1Tprb7ZQnygnd29kbzAg8s');
+        var stripe = Stripe('pk_test_PHFmHnlx8XQASMab8s9o5laq');
         var elements = stripe.elements();
 
         stripe.createToken(card).then(function (result) {
+            alert(result.token);
             if(result.error){
-                // Inform the customer that there was an error.
-                var errorElement = document.getElementById('card-errors');
-                errorElement.textContent = result.error.message;
+                alert(result.error);
             }else{
+                alert("successfull");
                 // Insert the token ID into the form so it gets submitted to the server
-                var form = document.getElementById('payment-form');
-                var hiddenInput = document.createElement('input');
-                //hiddenInput.setAttribute('type', 'hidden');
-                hiddenInput.setAttribute('name', 'stripeToken');
-                hiddenInput.setAttribute('value', token.id);
-                form.appendChild(hiddenInput);
-
-                // Submit the form
-                alert(hiddenInput);
+                // var form = document.getElementById('payment-form');
+                // var hiddenInput = document.createElement('input');
+                // //hiddenInput.setAttribute('type', 'hidden');
+                // hiddenInput.setAttribute('name', 'stripeToken');
+                // hiddenInput.setAttribute('value', token.id);
+                // form.appendChild(hiddenInput);
+                //
+                // alert(hiddenInput.innerText);
             }
         });
 
